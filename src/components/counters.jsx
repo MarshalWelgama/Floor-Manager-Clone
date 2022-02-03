@@ -2,17 +2,14 @@ import React, { Component } from "react";
 import moment from "moment";
 import Counter from "./counter";
 
+import "./css/counters.css";
 class Counters extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
-
-        counters: [
-          { id: 1, value: "james upgd 30 min" },
-          { id: 2, value: 5 },
-          { id: 3, value: 5 },
-        ],
-    }
+      curTime: moment().format(),
+      countersArr: this.props.countersArr,
+    };
   }
   componentDidMount() {
     setInterval(() => {
@@ -21,17 +18,24 @@ class Counters extends Component {
       });
     }, 1000);
   }
- 
+
+  componentWillReceiveProps(nextProps) {
+    let previous = this.state;
+    previous.countersArr = nextProps.countersArr;
+    this.setState(previous);
+  }
+
   handleDelete = (countId) => {
-    const counters = this.state.counters.filter((c) => c.id !== countId);
-    this.setState({ counters });
+    const countersArr = this.state.countersArr.filter((c) => c.id !== countId);
+    this.setState({ countersArr });
+    this.props.onDeleteUpdate(countId);
     console.log("deleteing line", countId);
   };
   render() {
     return (
       <div>
         <ul>
-          {this.state.counters.map((counter) => (
+          {this.state.countersArr.map((counter) => (
             <li>
               <Counter
                 key={counter.id}

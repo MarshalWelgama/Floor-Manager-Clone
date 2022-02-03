@@ -6,7 +6,7 @@ class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
-      timeNow: moment().format()
+      timeNow: moment().format(),
     };
   }
 
@@ -16,11 +16,14 @@ class Counter extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <span className="badge bg-primary">{moment(this.props.timeExac).diff(this.state.timeNow, 'minutes')}</span>
+        <span className="badge bg-primary">
+          {moment(this.props.timeExac).diff(this.state.timeNow, "minutes")}
+        </span>
         <span>{this.props.counter.value}</span>
         <button onClick={() => this.props.onDelete(this.props.counter.id)}>
           Delete
         </button>
+        <button>Edit</button>
       </React.Fragment>
     );
   }
