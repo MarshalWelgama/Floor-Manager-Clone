@@ -1,0 +1,17 @@
+.cardWhole {
+  display: grid;
+  grid-template-columns: 1fr auto 4fr 1fr;
+}
+.informationText {
+  text-align: center;
+  font-size: 2rem;
+  margin: auto;
+}
+.timeBox {
+  margin: auto;
+  text-align: center;
+}
+.divider {
+  background-color: rgba(0, 0, 0, 0.082);
+  width: 1px;
+}

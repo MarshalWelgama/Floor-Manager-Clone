@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
 import Counters from "./counters";
-
+import InputBar from "./inputBar";
 class main extends Component {
   state = {
-    counters: [{ id: 1, value: "james upgd 30 min" }],
+    counters: [
+      { id: 1, information: "james upgd 30 min", number: "0411223344" },
+    ],
   };
 
-  handleAdd = (value) => {
+  handleAdd = (information) => {
     const id = Math.floor(Math.random() * 101);
     let previousCounter = this.state.counters.slice();
 
-    previousCounter.push({ id: id, value: value });
+    previousCounter.push({ id: id, information: information });
 
     this.setState({ counters: previousCounter });
-    console.log(value);
+    console.log(information);
     console.log(this.state);
   };
 
@@ -31,6 +33,7 @@ class main extends Component {
           countersArr={this.state.counters}
           onDeleteUpdate={this.handleDelete}
         />
+        <InputBar onAdd={this.handleAdd} />
       </React.Fragment>
     );
   }

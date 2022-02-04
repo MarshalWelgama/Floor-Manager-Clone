@@ -34,18 +34,14 @@ class Counters extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.state.countersArr.map((counter) => (
-            <li>
-              <Counter
-                key={counter.id}
-                counter={counter}
-                onDelete={this.handleDelete}
-                timeExac={this.state.curTime}
-              />
-            </li>
-          ))}
-        </ul>
+        {this.state.countersArr.map((counter) => (
+          <Counter
+            key={counter.id}
+            counter={counter}
+            onDelete={this.handleDelete}
+            timeExac={this.state.curTime}
+          />
+        ))}
       </div>
     );
   }
