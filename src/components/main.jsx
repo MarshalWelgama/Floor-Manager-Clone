@@ -2,11 +2,28 @@ import React, { Component } from "react";
 import NavBar from "./NavBar";
 import Counters from "./counters";
 import InputBar from "./inputBar";
+import axios from "axios";
 class main extends Component {
-  state = {
-    counters: [
-      { id: 1, information: "james upgd 30 min", number: "0411223344" },
-    ],
+  constructor() {
+    super();
+    this.state = {
+      counters: [],
+      // counters: [
+      //   { id: 1, information: "james upgd 30 min", number: "0411223344" },
+      // ],
+    };
+  }
+  componentDidMount() {
+    this.getCustomers().then(console.log(this.state));
+  }
+
+  getCustomers = async () => {
+    let customers = axios
+      .get("http://localhost:5000/api/620cd6b4205e3178fba0252c/customers")
+      .then((customers) => {
+        console.log(customers.data);
+        this.setState({ counters: customers.data });
+      });
   };
 
   handleAdd = (information) => {

@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-	date: String
+	time: String,
+	dNumber: String
 })
 
 module.exports = mongoose.model("Session", schema)

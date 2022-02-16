@@ -1,6 +1,7 @@
 const express = require("express")
 const Customer = require("./models/Customer") // new
 const Session = require("./models/Session")
+const moment = require("moment")
 const router = express.Router()
 
 
@@ -9,7 +10,7 @@ router.post("/:auth/customers", async (req, res) => {
     console.log(req.body.number)
 	const customer = new Customer({
         auth: req.params.auth,
-		name: req.body.name,
+		information: req.body.information,
 		number: req.body.number,
 	})
 	await customer.save()
@@ -31,12 +32,14 @@ router.get("/:auth/customers/:id", async (req, res) => {
 
 //create new session
 router.post("/session", async (req, res) => {
-    console.log(req.body.date)
+
+	var dateToday = moment().format("DD/MM/YYYY HH:mm")
 	const session = new Session({
-		date: req.body.date
+		time: dateToday,
+		dNumber: req.body.dNumber
 	})
 	await session.save()
-	res.send(session)
+	res.send(session._id)
 })
 
 module.exports = router

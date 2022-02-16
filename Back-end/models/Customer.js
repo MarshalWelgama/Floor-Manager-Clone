@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
     auth: String,
-	name: String,
+	information: String,
 	number: String,
 })
 
