@@ -12,9 +12,21 @@ router.post("/:auth/customers", async (req, res) => {
         auth: req.params.auth,
 		information: req.body.information,
 		number: req.body.number,
+		time: moment().format()
+
 	})
 	await customer.save()
 	res.send(customer)
+})
+
+router.delete("/customers/:id", async (req, res) => {
+	try {
+		await Customer.deleteOne({ _id: req.params.id })
+		res.status(204).send()
+	} catch {
+		res.status(404)
+		res.send({ error: "customer doesn't exist!" })
+	}
 })
 
 //get all customer info based on session id
