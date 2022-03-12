@@ -22,7 +22,7 @@ router.post("/:auth/customers", async (req, res) => {
 router.delete("/customers/:id", async (req, res) => {
 	try {
 		await Customer.deleteOne({ _id: req.params.id })
-		res.status(204).send()
+		res.status(200).send()
 	} catch {
 		res.status(404)
 		res.send({ error: "customer doesn't exist!" })

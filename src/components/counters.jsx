@@ -10,6 +10,7 @@ class Counters extends Component {
       curTime: moment().format(),
       countersArr: this.props.countersArr,
     };
+    console.log(this.state);
   }
   componentDidMount() {
     setInterval(() => {

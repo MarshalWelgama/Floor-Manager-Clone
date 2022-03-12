@@ -30,12 +30,13 @@ class TextInput extends Component {
     this.setState({ openModal: false });
   };
 
-  onSubmitDetails = (text) => {
-    this.props.onAdd(text);
+  onSubmitDetails = (information, number) => {
+    this.props.onAdd(information, number);
     this.onCloseModal();
   };
 
   render() {
+    var name;
     return (
       <div>
         <div style={footerStyle}>
@@ -52,11 +53,14 @@ class TextInput extends Component {
             <Form>
               <Form.Field>
                 <label>Who and Why?</label>
-                <input placeholder="Customers Name and Reason" />
+                <Form.Input
+                  placeholder="Customers Name and Reason"
+                  name="tester"
+                />
               </Form.Field>
               <Form.Field>
                 <label>Best Contact Number</label>
-                <input placeholder="Phone Number" />
+                <Form.Input placeholder="Phone Number" value={name} />
               </Form.Field>
               <Form.Field
                 style={{
@@ -73,7 +77,7 @@ class TextInput extends Component {
                   content="Add To Queue"
                   labelPosition="right"
                   icon="plus"
-                  onClick={() => this.onSubmitDetails("test")}
+                  onClick={() => this.onSubmitDetails(name, "0400000000")}
                 />
               </Form.Field>
             </Form>

@@ -18,7 +18,8 @@ class main extends Component {
   }
 
   getCustomers = async () => {
-    let customers = axios
+    //console.log("hi");
+    let customers = await axios
       .get("http://localhost:5000/api/620cd6b4205e3178fba0252c/customers")
       .then((customers) => {
         console.log(customers.data);
@@ -26,21 +27,28 @@ class main extends Component {
       });
   };
 
-  handleAdd = (information) => {
-    const id = Math.floor(Math.random() * 101);
-    let previousCounter = this.state.counters.slice();
-
-    previousCounter.push({ id: id, information: information });
-
-    this.setState({ counters: previousCounter });
-    console.log(information);
-    console.log(this.state);
+  handleAdd = async (information, number) => {
+    const { status } = await axios.post(
+      "http://localhost:5000/api/620cd6b4205e3178fba0252c/customers",
+      {
+        information: information,
+        number: number,
+      }
+    );
+    if (status == 200) {
+      this.getCustomers();
+    }
   };
 
-  handleDelete = (countId) => {
-    const counters = this.state.counters.filter((c) => c.id !== countId);
-    this.setState({ counters });
-    console.log("deleteing line from main");
+  handleDelete = async (id) => {
+    const { status } = await axios.delete(
+      "http://localhost:5000/api/customers/" + id
+    );
+    console.log(status);
+    if (status == 200) {
+      console.log("hi");
+      this.getCustomers();
+    }
   };
   render() {
     return (

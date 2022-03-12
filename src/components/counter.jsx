@@ -7,10 +7,10 @@ import "./css/counter.css";
 import { Form, Button, Segment, Statistic } from "semantic-ui-react";
 
 class Counter extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      timeNow: moment().format(),
+      timeNow: this.props.counter.time,
       openModal: false,
     };
   }
@@ -96,7 +96,7 @@ class Counter extends React.Component {
                 content="Remove"
                 labelPosition="left"
                 icon="remove user"
-                onClick={() => this.props.onDelete(this.props.counter.id)}
+                onClick={() => this.props.onDelete(this.props.counter._id)}
               />
               <Button
                 id="submitButton"
