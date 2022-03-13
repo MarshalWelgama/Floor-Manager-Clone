@@ -20,6 +20,8 @@ const footerStyle = {
 class TextInput extends Component {
   state = {
     openModal: false,
+    name: "",
+    number: "",
   };
   onClickButton = (e) => {
     e.preventDefault();
@@ -34,9 +36,16 @@ class TextInput extends Component {
     this.props.onAdd(information, number);
     this.onCloseModal();
   };
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
+  handleSubmit = () => {
+    console.log("hi");
+    const { name, number } = this.state;
+    this.props.onAdd(name, number);
+    this.onCloseModal();
+    this.setState({ name: "", number: "" });
+  };
 
   render() {
-    var name;
     return (
       <div>
         <div style={footerStyle}>
@@ -55,12 +64,19 @@ class TextInput extends Component {
                 <label>Who and Why?</label>
                 <Form.Input
                   placeholder="Customers Name and Reason"
-                  name="tester"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChange}
                 />
               </Form.Field>
               <Form.Field>
                 <label>Best Contact Number</label>
-                <Form.Input placeholder="Phone Number" value={name} />
+                <Form.Input
+                  placeholder="Phone Number"
+                  value={this.state.number}
+                  name="number"
+                  onChange={this.handleChange}
+                />
               </Form.Field>
               <Form.Field
                 style={{
@@ -77,7 +93,7 @@ class TextInput extends Component {
                   content="Add To Queue"
                   labelPosition="right"
                   icon="plus"
-                  onClick={() => this.onSubmitDetails(name, "0400000000")}
+                  onClick={this.handleSubmit}
                 />
               </Form.Field>
             </Form>
