@@ -1,16 +1,30 @@
-import logo from "./logo.svg";
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Counters from "./components/counters";
 import Main from "./components/main";
+import LandingPage from "./components/landingPage";
+import InvalidUrl from "./components/invalid";
 import React from "react";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
 function App() {
-  
   return (
-    <React.Fragment>
-      <Main/>
-    </React.Fragment>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/floor/:sessionId">
+            <Main />
+          </Route>
+          <Route path="*" component={InvalidUrl} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
