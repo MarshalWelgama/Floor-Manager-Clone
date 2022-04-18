@@ -33,10 +33,12 @@ class Counters extends Component {
     console.log("deleteing line", countId);
   };
   render() {
+    var { session } = this.props;
     return (
       <div>
         {this.state.countersArr.map((counter) => (
           <Counter
+            session={session}
             key={counter.id}
             counter={counter}
             onDelete={this.handleDelete}

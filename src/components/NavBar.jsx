@@ -4,6 +4,7 @@ import "./css/NavBar.css";
 
 class NavBar extends Component {
   render() {
+    var { session } = this.props;
     return (
       <div className="parentDiv">
         <div className="navi">

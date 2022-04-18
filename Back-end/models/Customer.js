@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-    auth: String,
+    session: String,
 	information: String,
 	number: String,
 	time: String

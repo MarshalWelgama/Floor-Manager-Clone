@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={LandingPage} />
-          <Route path="/floor/:sessionId">
+          <Route path="/:sessionId">
             <Main />
           </Route>
           <Route path="*" component={InvalidUrl} />

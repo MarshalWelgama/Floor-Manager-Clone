@@ -6,10 +6,10 @@ const router = express.Router()
 
 
 //creates new customer
-router.post("/:auth/customers", async (req, res) => {
+router.post("/:session/customers", async (req, res) => {
     console.log(req.body.number)
 	const customer = new Customer({
-        auth: req.params.auth,
+        session: req.params.session,
 		information: req.body.information,
 		number: req.body.number,
 		time: moment().format()
@@ -30,28 +30,30 @@ router.delete("/customers/:id", async (req, res) => {
 })
 
 //get all customer info based on session id
-router.get("/:auth/customers/", async (req, res) => {
-	const post = await Customer.find({auth: req.params.auth})
+router.get("/:session/customers/", async (req, res) => {
+	const post = await Customer.find({session: req.params.session})
 	res.send(post)
 })
 
 //get specific customer info based on id
-router.get("/:auth/customers/:id", async (req, res) => {
-	const post = await Customer.findOne({ _id: req.params.id, auth: req.params.auth})
+router.get("/:session/customers/:id", async (req, res) => {
+	const post = await Customer.findOne({ _id: req.params.id, session: req.params.session})
 	res.send(post)
 })
 
 
 //create new session
 router.post("/session", async (req, res) => {
-
 	var dateToday = moment().format("DD/MM/YYYY HH:mm")
 	const session = new Session({
 		time: dateToday,
-		dNumber: req.body.dNumber
+		guid: req.body.guid
 	})
 	await session.save()
-	res.send(session._id)
+	res.send({_id: session._id,
+	guid: session.guid})
+	console.log(session._id)
+	console.log(session.guid)
 })
 
 module.exports = router

@@ -14,7 +14,7 @@ app.use(cors({
 			origin: "*",
 		}))
 mongoose
-	.connect("mongodb://localhost:27017/floorManager", { useNewUrlParser: true })
+	.connect("mongodb://127.0.0.1:27017/floorManager", { useNewUrlParser: true })
 	.then(() => {
         app.use(express.json())
         app.use('/api', routes)

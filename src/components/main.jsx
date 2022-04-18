@@ -3,11 +3,18 @@ import NavBar from "./NavBar";
 import Counters from "./counters";
 import InputBar from "./inputBar";
 import axios from "axios";
+import PropTypes from "prop-types";
 class main extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
   constructor() {
     super();
     this.state = {
       counters: [],
+      sessionId: window.location.pathname.substring(1),
       // counters: [
       //   { id: 1, information: "james upgd 30 min", number: "0411223344" },
       // ],
@@ -18,9 +25,11 @@ class main extends Component {
   }
 
   getCustomers = async () => {
+    console.log(this.state.sessionId);
+    const session = this.state.sessionId;
     //console.log("hi");
     let customers = await axios
-      .get("http://localhost:5000/api/620cd6b4205e3178fba0252c/customers")
+      .get(`http://localhost:5000/api/${session}/customers`)
       .then((customers) => {
         console.log(customers.data);
         this.setState({ counters: customers.data });
@@ -28,8 +37,9 @@ class main extends Component {
   };
 
   handleAdd = async (information, number) => {
+    const { sessionId } = this.state;
     const { status } = await axios.post(
-      "http://localhost:5000/api/620cd6b4205e3178fba0252c/customers",
+      `http://localhost:5000/api/${sessionId}/customers`,
       {
         information: information,
         number: number,
@@ -51,14 +61,16 @@ class main extends Component {
     }
   };
   render() {
+    const { sessionId } = this.state;
     return (
       <React.Fragment>
-        <NavBar onAdd={this.handleAdd} />
+        <NavBar session={this.state.sessionId} onAdd={this.handleAdd} />
         <Counters
+          session={this.state.sessionId}
           countersArr={this.state.counters}
           onDeleteUpdate={this.handleDelete}
         />
-        <InputBar onAdd={this.handleAdd} />
+        <InputBar session={this.state.sessionId} onAdd={this.handleAdd} />
       </React.Fragment>
     );
   }
