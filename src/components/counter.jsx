@@ -96,7 +96,10 @@ class Counter extends React.Component {
                 content="Remove"
                 labelPosition="left"
                 icon="remove user"
-                onClick={() => this.props.onDelete(this.props.counter._id)}
+                onClick={() => {
+                  this.props.onDelete(this.props.counter._id);
+                  this.setState({ openModal: false });
+                }}
               />
               <Button
                 id="submitButton"
