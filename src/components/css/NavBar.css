@@ -16,7 +16,6 @@ body {
   display: grid;
   text-align: center;
   padding: 1.25em;
-
   margin-bottom: 0.5em;
 }
 
@@ -27,6 +26,7 @@ body {
     text-align: center;
     padding: 1.25em;
     margin-bottom: 0.5em;
-    font-weight: 900;
+    font-weight: 600;
+    font-size: xx-large;
   }
 }

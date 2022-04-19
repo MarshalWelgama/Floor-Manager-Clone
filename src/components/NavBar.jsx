@@ -18,7 +18,7 @@ class NavBar extends Component {
             </Button>
           </div>
 
-          <a style={{ "font-size": "xxx-large" }}>Gaffer</a>
+          <a style={{ "font-size": "48px" }}>Gaffer</a>
         </div>
       </div>
     );
