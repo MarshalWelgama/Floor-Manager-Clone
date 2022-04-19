@@ -8,7 +8,13 @@ class NavBar extends Component {
     return (
       <div className="parentDiv">
         <div className="navi">
-          <Button onClick={navigator.clipboard.writeText(session)}>Copy</Button>
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(session);
+            }}
+          >
+            Copy
+          </Button>
           <a style={{ "font-size": "xx-large" }}>Emergency Floor Manager</a>
         </div>
       </div>

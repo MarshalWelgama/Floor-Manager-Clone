@@ -4,6 +4,7 @@ import Counters from "./counters";
 import InputBar from "./inputBar";
 import axios from "axios";
 import PropTypes from "prop-types";
+const API_URL = process.env.REACT_APP_API_URL;
 class main extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -29,7 +30,7 @@ class main extends Component {
     const session = this.state.sessionId;
     //console.log("hi");
     let customers = await axios
-      .get(`http://localhost:5000/api/${session}/customers`)
+      .get(`${API_URL}/api/${session}/customers`)
       .then((customers) => {
         console.log(customers.data);
         this.setState({ counters: customers.data });
@@ -39,7 +40,7 @@ class main extends Component {
   handleAdd = async (information, number) => {
     const { sessionId } = this.state;
     const { status } = await axios.post(
-      `http://localhost:5000/api/${sessionId}/customers`,
+      `${API_URL}/api/${sessionId}/customers`,
       {
         information: information,
         number: number,
@@ -51,9 +52,7 @@ class main extends Component {
   };
 
   handleDelete = async (id) => {
-    const { status } = await axios.delete(
-      "http://localhost:5000/api/customers/" + id
-    );
+    const { status } = await axios.delete(API_URL + "/api/customers/" + id);
     console.log(status);
     if (status == 200) {
       console.log("hi");

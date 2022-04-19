@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
-
+const API_URL = process.env.REACT_APP_API_URL;
 // A simple component that shows the pathname of the current location
 class landingPage extends React.Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class landingPage extends React.Component {
     const newGuid = this.uuidv4();
     //this.props.history.push(`${this.uuidv4()}`);
     const { status, request, data } = await axios.post(
-      `http://localhost:5000/api/session`,
+      `${API_URL}/api/session`,
       {
         guid: newGuid,
       }
