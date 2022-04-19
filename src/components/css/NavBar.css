@@ -16,5 +16,17 @@ body {
   display: grid;
   text-align: center;
   padding: 1.25em;
+
   margin-bottom: 0.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  .navi {
+    grid-template-columns: 0.5fr auto auto 0.5fr;
+    display: grid;
+    text-align: center;
+    padding: 1.25em;
+    margin-bottom: 0.5em;
+    font-weight: 900;
+  }
 }
