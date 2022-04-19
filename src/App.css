@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Yantramanav:wght@900&display=swap);
 .App {
   text-align: center;
   height: 100%;
@@ -10,13 +11,20 @@ body > div {
 .ui.button.login-button {
   display: inline-block;
   color: white;
-  padding: 26px 30px 26px 30px;
+  padding: 14px 24px 14px 24px;
   background-color: #42668e;
-  border-radius: 200px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 24px;
   box-shadow: 0 0 5px rgba(33, 33, 33, 0.2);
   outline: 0;
+  margin: 0 0 0 0;
+}
+.title-logo {
+  color: #42668e;
+  font-weight: 600;
+  font-size: 100px;
+  font-family: "Yantramanav", sans-serif;
 }
 .actions {
   display: grid;
@@ -26,7 +34,7 @@ body > div {
 .landing-page {
   background-color: rgb(252, 252, 252);
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 0.5fr 1fr 2fr;
   place-items: center;
   height: 100vh;
 }

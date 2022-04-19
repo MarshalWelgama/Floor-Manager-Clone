@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poiret+One|Lobster|Anton|Shadows+Into+Light|Open+Sans|Roboto|Orbitron|Oswald|Raleway|Montserrat|Roboto+Slab|Indie+Flower|Fjalla+One|Bree+Serif|Pacifico|Abril+Fatface);
+@import url(https://fonts.googleapis.com/css2?family=Yantramanav:wght@300&display=swap);
 body {
   margin: 0;
   padding: 0;
@@ -8,10 +8,12 @@ body {
   width: 100%;
   background-color: #42668e;
   color: #f5f1e6;
-  font-family: "indie flower";
+  font-family: "Yantramanav", sans-serif;
 }
 
 .navi {
+  grid-template-columns: 0.5fr auto auto 0.5fr;
+  display: grid;
   text-align: center;
   padding: 1.25em;
   margin-bottom: 0.5em;

@@ -53,6 +53,10 @@ class landingPage extends React.Component {
           <meta name="theme-color" content="#fcfcfc" />
         </Helmet>
         <div></div>
+        <div style={{ alignSelf: "end" }}>
+          {" "}
+          <a className="title-logo">Gaffer</a>
+        </div>
         <div className="actions">
           <Button className="login-button" onClick={this.onCreateNew}>
             Create New
@@ -64,7 +68,6 @@ class landingPage extends React.Component {
                 name="name"
                 onChange={this.handleInputChange}
               />
-              <Form.Button content="Join" color="blue" />
             </Form.Group>
           </Form>
         </div>
