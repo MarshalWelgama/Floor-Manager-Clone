@@ -4,6 +4,7 @@ import Counters from "./counters";
 import InputBar from "./inputBar";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 const API_URL = process.env.REACT_APP_API_URL;
 class main extends Component {
   static propTypes = {
@@ -63,6 +64,9 @@ class main extends Component {
     const { sessionId } = this.state;
     return (
       <React.Fragment>
+        <Helmet>
+          <meta name="theme-color" content="#42668e" />
+        </Helmet>
         <NavBar session={this.state.sessionId} onAdd={this.handleAdd} />
         <Counters
           session={this.state.sessionId}

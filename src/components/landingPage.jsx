@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Form, Button } from "semantic-ui-react";
+import { Helmet } from "react-helmet";
 const API_URL = process.env.REACT_APP_API_URL;
 // A simple component that shows the pathname of the current location
 class landingPage extends React.Component {
@@ -48,6 +49,9 @@ class landingPage extends React.Component {
 
     return (
       <div className="landing-page">
+        <Helmet>
+          <meta name="theme-color" content="#fcfcfc" />
+        </Helmet>
         <div></div>
         <div className="actions">
           <Button className="login-button" onClick={this.onCreateNew}>
