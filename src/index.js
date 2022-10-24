@@ -6,13 +6,18 @@ import Counters from './components/counters'
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'semantic-ui-css/semantic.min.css'
+import { Provider as StyletronProvider } from 'styletron-react';
+import { Client as Styletron } from 'styletron-engine-atomic';
+import { LightTheme, BaseProvider } from 'baseui';
 
-
+const engine = new Styletron();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App/>
-  </React.StrictMode>,
+  <StyletronProvider value={engine}>
+    <BaseProvider theme={LightTheme}>
+      <App />
+    </BaseProvider>
+  </StyletronProvider>,
   document.getElementById('root')
 );
 

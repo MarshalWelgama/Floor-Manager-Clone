@@ -12,7 +12,7 @@ body > div {
   display: inline-block;
   color: white;
   padding: 14px 24px 14px 24px;
-  background-color: #42668e;
+  background-color: #000000;
   border-radius: 8px;
   font-weight: 600;
   font-size: 24px;
@@ -21,7 +21,7 @@ body > div {
   margin: 0 0 0 0;
 }
 .title-logo {
-  color: #42668e;
+  color: #000000;
   font-weight: 600;
   font-size: 100px;
   font-family: "Yantramanav", sans-serif;
@@ -30,11 +30,11 @@ body > div {
   display: grid;
   grid-template-rows: 1fr 2fr;
   place-items: center;
+  margin-top: 100px;
 }
 .landing-page {
   background-color: rgb(252, 252, 252);
   display: grid;
-  grid-template-rows: 0.5fr 1fr 2fr;
   place-items: center;
   height: 100vh;
 }

@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Form, Button } from "semantic-ui-react";
+import {useStyletron} from 'baseui';
+import { Form } from "semantic-ui-react";
+import { Button, SIZE } from "baseui/button";
+import { Input } from "baseui/input";
 import { Helmet } from "react-helmet";
 const API_URL = process.env.REACT_APP_API_URL;
 // A simple component that shows the pathname of the current location
-class landingPage extends React.Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-  };
-  uuidv4 = () => {
+const LandingPage = () => {
+
+  const [css, theme] = useStyletron();
+
+  const uuidv4 = () => {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
       (
         c ^
@@ -19,8 +20,9 @@ class landingPage extends React.Component {
       ).toString(16)
     );
   };
-  onCreateNew = async () => {
-    const newGuid = this.uuidv4();
+
+  const onCreateNew = async () => {
+    const newGuid = uuidv4();
     //this.props.history.push(`${this.uuidv4()}`);
     const { status, request, data } = await axios.post(
       `${API_URL}/api/session`,
@@ -29,51 +31,55 @@ class landingPage extends React.Component {
       }
     );
     if (status == 200) {
-      console.log(data);
-      this.props.history.push(`${newGuid}`);
+      console.log("now redirect to another url with the guid");
     }
   };
 
-  onJoin = (id) => {
-    this.props.history.push(`${id}`);
-  };
-
-  handleInputChange = (e, { name, value }) => this.setState({ [name]: value });
-  handleSubmit = () => {
-    const { name } = this.state;
-    this.props.history.push(`${name}`);
-  };
-
-  render() {
-    const { match, location, history } = this.props;
-
-    return (
-      <div className="landing-page">
-        <Helmet>
-          <meta name="theme-color" content="#fcfcfc" />
-        </Helmet>
-        <div></div>
-        <div style={{ alignSelf: "end" }}>
-          {" "}
-          <a className="title-logo">Gaffer</a>
+  return (
+    <div className="landing-page">
+      <Helmet>
+        <meta name="theme-color" content="#fcfcfc" />
+      </Helmet>
+      <div>
+        <div>
+          <span className="title-logo">KjuMi</span>
         </div>
         <div className="actions">
-          <Button className="login-button" onClick={this.onCreateNew}>
+          <Button
+            onClick={() => onCreateNew()}
+            size={SIZE.large}
+            overrides={{
+              Root: {
+                style: {
+                  width: '80%',
+                },
+              },
+            }}
+          >
             Create New
           </Button>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group>
-              <Form.Input
-                placeholder="Enter Session Id"
-                name="name"
-                onChange={this.handleInputChange}
-              />
-            </Form.Group>
-          </Form>
+          <Input
+            value={""}
+            onChange={e => this.handleInputChange(e.target.value)}
+            placeholder="Enter Session ID"
+            clearOnEscape
+            size={SIZE.large}
+            overrides={{
+              Root: {
+                style: {
+                  width: '80%',
+                },
+              },
+            }}
+          />
         </div>
       </div>
-    );
-  }
+
+
+
+    </div>
+
+  );
 }
 
-export default landingPage;
+export default LandingPage;
