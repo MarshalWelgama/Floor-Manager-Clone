@@ -15,7 +15,7 @@ import { Input } from "baseui/input";
 import { Helmet } from "react-helmet";
 const API_URL = process.env.REACT_APP_API_URL;
 // A simple component that shows the pathname of the current location
-const LandingPage = () => {
+const LandingPage = (props) => {
 
   const [css, theme] = useStyletron();
 
@@ -38,7 +38,7 @@ const LandingPage = () => {
       }
     );
     if (status == 200) {
-      console.log("now redirect to another url with the guid");
+      props.history.push(`/${newGuid}`);
     }
   };
 
