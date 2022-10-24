@@ -4,6 +4,13 @@ import axios from "axios";
 import {useStyletron} from 'baseui';
 import { Form } from "semantic-ui-react";
 import { Button, SIZE } from "baseui/button";
+import {
+  DisplayLarge,
+  DisplayMedium,
+  DisplaySmall,
+  DisplayXSmall,
+} from 'baseui/typography';
+
 import { Input } from "baseui/input";
 import { Helmet } from "react-helmet";
 const API_URL = process.env.REACT_APP_API_URL;
@@ -42,7 +49,9 @@ const LandingPage = () => {
       </Helmet>
       <div>
         <div>
-          <span className="title-logo">KjuMi</span>
+        <DisplayLarge marginBottom="scale500">
+        {"KjuMi"}
+      </DisplayLarge>
         </div>
         <div className="actions">
           <Button
