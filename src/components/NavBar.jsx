@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Button, Divider, Header } from "semantic-ui-react";
+import { Button } from "baseui/button";
+import {
+  DisplaySmall,
+} from 'baseui/typography';
 import "./css/NavBar.css";
 
 class NavBar extends Component {
@@ -13,12 +16,13 @@ class NavBar extends Component {
               onClick={() => {
                 navigator.clipboard.writeText(session);
               }}
+  
             >
               Copy
             </Button>
           </div>
 
-          <a style={{ "font-size": "48px" }}>Gaffer</a>
+          <DisplaySmall style={{"color": "white"}}>KjuMi</DisplaySmall>
         </div>
       </div>
     );

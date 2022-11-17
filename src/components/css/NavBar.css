@@ -6,11 +6,11 @@ body {
 
 .parentDiv {
   width: 100%;
-  background-color: #42668e;
+  background-color: #000000;
   color: #f5f1e6;
   font-family: "Yantramanav", sans-serif;
 }
-
+/* #42668e; */
 .navi {
   grid-template-columns: 0.5fr auto auto 0.5fr;
   display: grid;

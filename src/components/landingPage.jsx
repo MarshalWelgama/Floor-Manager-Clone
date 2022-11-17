@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import {useStyletron} from 'baseui';
+import { useStyletron } from 'baseui';
 import { Form } from "semantic-ui-react";
 import { Button, SIZE } from "baseui/button";
 import {
@@ -17,6 +17,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 // A simple component that shows the pathname of the current location
 const LandingPage = (props) => {
 
+  const [value, setValue] = React.useState("");
   const [css, theme] = useStyletron();
 
   const uuidv4 = () => {
@@ -49,9 +50,9 @@ const LandingPage = (props) => {
       </Helmet>
       <div>
         <div>
-        <DisplayLarge marginBottom="scale500">
-        {"KjuMi"}
-      </DisplayLarge>
+          <DisplayLarge marginBottom="scale500">
+            {"KjuMi"}
+          </DisplayLarge>
         </div>
         <div className="actions">
           <Button
@@ -67,20 +68,28 @@ const LandingPage = (props) => {
           >
             Create New
           </Button>
-          <Input
-            value={""}
-            onChange={e => this.handleInputChange(e.target.value)}
-            placeholder="Enter Session ID"
-            clearOnEscape
-            size={SIZE.large}
-            overrides={{
-              Root: {
-                style: {
-                  width: '80%',
+          <div style={{ "display": "flex", "justifyContent": "center" }}>
+            <Input
+
+              value={value}
+              onChange={e => setValue(e.target.value)}
+              placeholder="Session ID"
+              overrides={{
+                Root: {
+                  style: {
+                    width: "60%",
+                    marginRight: theme.sizing.scale400,
+                  },
                 },
-              },
-            }}
-          />
+              }}
+            />
+            <Button
+              onClick={() => console.log('hi')}
+
+            >
+              Go
+            </Button>
+          </div>
         </div>
       </div>
 
