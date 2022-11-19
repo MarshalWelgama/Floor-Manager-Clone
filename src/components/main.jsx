@@ -52,6 +52,10 @@ class main extends Component {
     }
   };
 
+  testfunc = () => {
+    console.log("Test")
+  }
+
   handleDelete = async (id) => {
     const { status } = await axios.delete(API_URL + "/api/customers/" + id);
     console.log(status);
@@ -61,7 +65,6 @@ class main extends Component {
     }
   };
   render() {
-    const { sessionId } = this.state;
     return (
       <React.Fragment>
         <Helmet>
@@ -73,7 +76,7 @@ class main extends Component {
           countersArr={this.state.counters}
           onDeleteUpdate={this.handleDelete}
         />
-        <InputBar session={this.state.sessionId} onAdd={this.handleAdd} />
+        <InputBar onSubmit={this.handleAdd} />
       </React.Fragment>
     );
   }
